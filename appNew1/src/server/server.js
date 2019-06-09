@@ -6,6 +6,7 @@ const SECRET_KEY = "Testing";
 const app = express();
 const router = express.Router();
 const port = process.env.PORT || 5000;
+const Sequelize = require("sequelize");
 
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
@@ -157,6 +158,31 @@ app.post('/signupstudent' , function(req , res) {
 
 
   });
+
+
+  app.post('/questions' , function(req, res) {
+
+    const questions = req.body.questions;
+
+    const anwers = req.body.anwers;
+
+    questions
+
+    .create({
+      questions : questions,
+      anwers : anwers
+    })
+    .then(function (){
+      return res.status(201).send({'success':'questions Sucessfully'});
+    })
+    .catch(function(err){
+      if (err.name === 'SequelizeUniqueConstraintError') {
+        return res.status(400).send({ error: 'There is question like this question' });
+      }
+      return res.status(500).send({ error: 'Server Error' });
+    })
+
+  })
 
 
 
