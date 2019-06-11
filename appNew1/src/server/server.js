@@ -5,38 +5,49 @@ const cors = require("cors");
 const SECRET_KEY = "Testing";
 const app = express();
 const router = express.Router();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 const Sequelize = require("sequelize");
 
 const bodyParser = require('body-parser');
 const mysql = require('mysql');
 
-app.use(express.static('../app'));
+app.use(express.static(__dirname + '../app'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended : true
+  extended : false
 }));
+app.use(cors());
+app.use(bodyParser.json());
+
+app.use((req, res, next) => {
+	res.header('Access-Control-Allow-Origin', '*');
+	res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+	next();
+});
 
 const {student , teacher , teacherCourse , course} = require('../database/model');
 
+app.get('/' , function(req, res){
+  res.send("Hello Woorld");
+})
+
 //Signup for student
 app.post('/signupstudent' , function(req , res) {
+  console.log("Hello From Post")
   let fullname  = req.body.fullname;
   let username = req.body.username;
   let password = req.body.password;
   let phoneNumber = req.body.phoneNumber;
   let location  = req.body.location;
-  let email  = req.body.email;
   let hashedPassword = bcrypt.hashSync(password , 10);
 
-  student
+  students
   .create({
     fullName : fullname,
     username : username,
     password : hashedPassword,
     phoneNumber : phoneNumber,
     location : location,
-    email : email
   })
   .then(function() {
     return res.status(201).send({ success: 'Sign up as engineer successful' });
