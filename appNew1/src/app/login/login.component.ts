@@ -19,13 +19,15 @@ export class LoginComponent implements OnInit {
       username : [''],
       password : [''],
     })
-
+    this.studentForm.valueChanges.subscribe((data)=>{
+      console.log(this.studentForm.value);
+    })
   }
 
   onSubmit() : void {
-    console.log(this.studentForm.value);
+    // console.log(this.studentForm.value);
 
-    console.log(this.studentForm.value);
+    // console.log(this.studentForm.value);
     this.http.post(`${this.uri}/signinstudent`, this.studentForm.value)
     .subscribe(res => console.log('Done'));
   }

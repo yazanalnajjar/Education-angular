@@ -10,12 +10,16 @@ import { SignupComponent } from './signup/signup.component';
 import {FormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
+import { LoginTeacherComponent } from './login-teacher/login-teacher.component';
+import { SignupTeacherComponent } from './signup-teacher/signup-teacher.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
     HomeComponent,
+    LoginTeacherComponent,
+    SignupTeacherComponent,
 
   ],
   imports: [

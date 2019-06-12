@@ -1,5 +1,7 @@
 const {db , Sequelize} = require('./db.js');
 
+db.Sequelize = Sequelize;
+
 
 
 const student = db.define('student' , {
@@ -20,33 +22,29 @@ const student = db.define('student' , {
 
 const teacher = db.define('teacher' , {
   id: { type: Sequelize.INTEGER,  autoIncrement: true, primaryKey: true },
-  name : {type: Sequelize.STRING , required : true},
+   name : {type: Sequelize.STRING , required : true},
+
   username : { type : Sequelize.STRING , required : true , unique: true},
   password : {type : Sequelize.STRING , required : true},
-  phoneNumber : {type : Sequelize.STRING , required : true},
+  phonenumber : {type : Sequelize.STRING , required : true},
   email  : {type : Sequelize.STRING , required : true}
 })
 
 
-const person = db.define('person' , {
-  person_name : {
-    type :Sequelize.STRING
-  },
-  business_name : {
-    type : Sequelize.STRING
-  },
-  business_gst_number: {
-    type: Sequelize.INTEGER
-  }
+// const person = db.define('person' , {
+//   person_name : {
+//     type :Sequelize.STRING
+//   },
+//   business_name : {
+//     type : Sequelize.STRING
+//   },
+//   business_gst_number: {
+//     type: Sequelize.INTEGER
+//   }
 
-})
+// })
 
-const teacherName = db.define('teacherName' , {
-  id: { type: Sequelize.INTEGER,  autoIncrement: true, primaryKey: true },
 
-  name : {type:Sequelize.STRING , required :true }
-
-})
 
 
 const teacherCourse = db.define('teacherCourse' , {
@@ -83,19 +81,18 @@ const Info = db.define('Info' , {
 
 })
 
-teacher.belongsToMany(courses , {through : 'teacherCourse'});
-teacher.belongsToMany(student , {through : 'teacherCourse'});
+student.belongsTo(teacher);
+
 
 
 
 
 module.exports.courses = courses;
-module.exports.teacherName = teacherName;
 module.exports.teacher = teacher;
 module.exports.student = student;
 module.exports.teacherCourse = teacherCourse;
 module.exports.Info = Info;
 module.exports.question = question;
 module.exports.material = material;
-module.exports.person = person;
+// module.exports.person = person;
 

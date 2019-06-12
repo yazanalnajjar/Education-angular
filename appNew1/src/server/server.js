@@ -25,7 +25,7 @@ app.use((req, res, next) => {
 	next();
 });
 
-const {student , teacher , teacherCourse , course , person} = require('../database/model');
+const {student , teacher , teacherCourse , course } = require('../database/model');
 
 app.get('/yzn' , function(req, res){
   console.log(res);
@@ -36,6 +36,7 @@ app.get('/yzn' , function(req, res){
 
 //Signup for student
 app.post('/signupstudent' , function(req , res) {
+  // console.log(res);
   const info = (req.body);
 
 
@@ -98,19 +99,19 @@ app.post('/signupstudent' , function(req , res) {
   //Sign Up For teacher
 
   app.post('/signupteacher' , function(req , res) {
-      let id = req.body.id;
+    let name = req.body.name;
       let username = req.body.username;
       let password = req.body.password;
-      let phoneNumber = req.body.phoneNumber;
+      let phonenumber = req.body.phonenumber;
       let email = req.body.email;
 
       teacher
 
       .create({
-        id : id,
+        name : name,
         username : username,
         password  : password,
-        phoneNumber : phoneNumber,
+        phonenumber : phonenumber,
         email : email
 
       })
@@ -143,14 +144,63 @@ app.post('/signupstudent' , function(req , res) {
       bcrypt.compare(password , existingHashedPassword).then(function(isMatching){
         if(isMatching){
           //create a token and send to client
+          // res.send("It's working");
           const token = jwt.sign({username : user.username} , SECRET_KEY, {expiresIn : 4000});
           return res.send({token : token});
         }else {
           return res.status(401).send({ error: 'Wrong password' });        }
       })
     })
-
   })
+
+    // const authenticate = function(req, res, next) {
+    //   const token = req.headers['x-access-token']; //Username encoded in token
+    //   if (!token) {
+    //     return res.status(401).send('Please sign in');
+    //   }
+    //   jwt.verify(token, SECRET_KEY, (err, data) => {
+    //     //console.log(data)
+    //     if (err) {
+    //       return res.status(401).send('Please sign in');
+    //     }
+    //     //Check if user exists in the database
+    //     const username = data.username;
+
+    //     if (data.role) {
+    //       //console.log(username)
+    //       student
+    //         .findOne({ where: { username: username } })
+    //         .then((user) => {
+    //           //console.log(user)
+    //           if (!user) {
+    //             return res.status(401).send('Please sign up');
+    //           }
+    //           req.body.user = user; // put user in req.body
+    //           //console.log(user)
+    //           return next();
+    //         })
+    //         .catch(function(err) {
+    //           return res.status(500).send(err);
+    //         });
+    //     } else {
+    //       teacher
+    //         .findOne({ where: { username: username } })
+    //         .then((user) => {
+    //           //console.log(user)
+    //           if (!user) {
+    //             return res.status(401).send('Please sign up');
+    //           }
+    //           req.body.user = user; // put user in req.body
+    //           //console.log(user)
+    //           return next();
+    //         })
+    //         .catch(function(err) {
+    //           return res.status(500).send(err);
+    //         });
+    //     }
+    //   });
+    // };
+
   app.post('/teacherCourse' , function(req , res){
 
         const id = req.body.id;
