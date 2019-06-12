@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup , FormBuilder , Validators, Form} from '@angular/forms';
-import {HttpClient} from "@angular/common/http";
+import { HttpClient } from '@angular/common/http';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,8 @@ import {HttpClient} from "@angular/common/http";
 })
 export class LoginComponent implements OnInit {
   studentForm : FormGroup;
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder  , private http: HttpClient) { }
+  uri = 'http://localhost:3000';
 
   ngOnInit() {
     this.studentForm = this.fb.group({
@@ -22,6 +24,10 @@ export class LoginComponent implements OnInit {
 
   onSubmit() : void {
     console.log(this.studentForm.value);
+
+    console.log(this.studentForm.value);
+    this.http.post(`${this.uri}/signinstudent`, this.studentForm.value)
+    .subscribe(res => console.log('Done'));
   }
 
 

@@ -3,12 +3,14 @@ const {db , Sequelize} = require('./db.js');
 
 
 const student = db.define('student' , {
+
   id: { type: Sequelize.INTEGER,  autoIncrement: true, primaryKey: true },
 
-  fullName : {type :Sequelize.STRING , required : true},
+  // firstname : {type :Sequelize.STRING , required : true},
+  // lastname : {type :Sequelize.STRING , required : true},
   username : {type : Sequelize.STRING , required : true , unique: true },
   password : {type : Sequelize.STRING , required  : true},
-  phoneNumber : {type : Sequelize.INTEGER , required : true},
+  phonenumber : {type : Sequelize.INTEGER , required : true},
   location : {type : Sequelize.STRING , required : true},
   email  : {type : Sequelize.STRING , required : true}
 
@@ -25,6 +27,19 @@ const teacher = db.define('teacher' , {
   email  : {type : Sequelize.STRING , required : true}
 })
 
+
+const person = db.define('person' , {
+  person_name : {
+    type :Sequelize.STRING
+  },
+  business_name : {
+    type : Sequelize.STRING
+  },
+  business_gst_number: {
+    type: Sequelize.INTEGER
+  }
+
+})
 
 const teacherName = db.define('teacherName' , {
   id: { type: Sequelize.INTEGER,  autoIncrement: true, primaryKey: true },
@@ -82,5 +97,5 @@ module.exports.teacherCourse = teacherCourse;
 module.exports.Info = Info;
 module.exports.question = question;
 module.exports.material = material;
-
+module.exports.person = person;
 

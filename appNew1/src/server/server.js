@@ -25,29 +25,38 @@ app.use((req, res, next) => {
 	next();
 });
 
-const {student , teacher , teacherCourse , course} = require('../database/model');
+const {student , teacher , teacherCourse , course , person} = require('../database/model');
 
-app.get('/' , function(req, res){
+app.get('/yzn' , function(req, res){
+  console.log(res);
   res.send("Hello Woorld");
 })
 
+
+
 //Signup for student
 app.post('/signupstudent' , function(req , res) {
-  console.log("Hello From Post")
-  let fullname  = req.body.fullname;
+  const info = (req.body);
+
+
+  // let firstname  = req.body.firstname;
+  // let lastname  = req.body.lastname;
   let username = req.body.username;
   let password = req.body.password;
-  let phoneNumber = req.body.phoneNumber;
+  let phonenumber = req.body.phonenumber;
   let location  = req.body.location;
-  let hashedPassword = bcrypt.hashSync(password , 10);
+  let email = req.body.email;
+  password = bcrypt.hashSync(info.password, 10);
 
-  students
+  student
   .create({
-    fullName : fullname,
+    // firstname : firstname,
+    // lastname : lastname,
     username : username,
-    password : hashedPassword,
-    phoneNumber : phoneNumber,
+    password : password,
+    phonenumber : phonenumber,
     location : location,
+    email : email
   })
   .then(function() {
     return res.status(201).send({ success: 'Sign up as engineer successful' });

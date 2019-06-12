@@ -22,17 +22,21 @@ export class SignupComponent implements OnInit {
 
 
   studentForm : FormGroup;
+
+  uri = 'http://localhost:3000';
+
   constructor(private fb:FormBuilder  , private http: HttpClient ) { }
 
   ngOnInit() {
 
     this.studentForm = this.fb.group({
 
-      firstname : [''],
-      lastname : [''],
+
+      username : [''],
       email  : [''],
       phonenumber : [''],
-      location : ['']
+      location : [''],
+      password : ['']
 
     })
 
@@ -43,28 +47,26 @@ export class SignupComponent implements OnInit {
 
 
   onSubmit()  {
-    // this.http
-    // .post<boolean>('http://localhost:3000/signupstudent',JSON.stringify( this.studentForm))
-    // .subscribe(data => {
-    //   console.log(data);
-    //    })
+    // const obj = {
+    //   person_name: 'yazan',
+    //   business_name: 'It Company',
+    //   business_gst_number: '4'
+    // };
 
-    this.http
-    .get<boolean>('http://localhost:3000/',{responseType: 'text' as 'json'})
-    .subscribe(data => {
-      console.log(data);
-  });
+      console.log(this.studentForm.value);
+  this.http.post(`${this.uri}/signupstudent`, this.studentForm.value)
+  .subscribe(res => console.log('Done'));
 
-  this.http
-    .post<boolean>('http://localhost:3000/signupstudent', this.studentForm,  httpOptions)
-    .pipe(
-      catchError("Is NOT Exiasdsad");
+  // // this.http
+  //   .post<boolean>('http://localhost:3000/signupstudent', this.studentForm,  httpOptions)
+  //   .pipe(
+  //     catchError("Is NOT Exiasdsad");
 
-  });
+  // });
 
 
-  // return this.http.get("http://jsonplaceholder.typicode.com/users").
-  // subscribe((data)  => { console.log(data)});
+  // return  this.http.get(`${this.uri}/yzn`).
+  // subscribe((res)  => { console.log(res)});
 
 
 }
