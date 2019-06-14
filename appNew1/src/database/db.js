@@ -13,5 +13,6 @@ db.sync({
   console.log(`Database & tables created!`)
 });
 
+
 module.exports.db = db;
 module.exports.Sequelize = Sequelize;

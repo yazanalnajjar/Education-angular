@@ -96,6 +96,7 @@ app.post('/signupstudent' , function(req , res) {
     })
   })
 
+
   //Sign Up For teacher
 
   app.post('/signupteacher' , function(req , res) {
@@ -127,6 +128,19 @@ app.post('/signupstudent' , function(req , res) {
 
   });
 
+
+  app.get('/' , function(req ,res){
+
+    teacher.findAll()
+    .then(teacher => {console.log('Done')})
+    .catch(err => console.log(err));
+    // teacher.findAll({where : {name : name}}).then();
+
+
+
+
+  })
+
   app.post('/signinteacher' , function(req, res){
 
     const username = req.body.username;
@@ -148,7 +162,9 @@ app.post('/signupstudent' , function(req , res) {
           const token = jwt.sign({username : user.username} , SECRET_KEY, {expiresIn : 4000});
           return res.send({token : token});
         }else {
-          return res.status(401).send({ error: 'Wrong password' });        }
+          return res.status(401).send({ error: 'Wrong password' });
+            alert("Wrong Password");
+        }
       })
     })
   })

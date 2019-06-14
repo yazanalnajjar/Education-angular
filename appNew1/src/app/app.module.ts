@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './home/home.component';
 import { LoginTeacherComponent } from './login-teacher/login-teacher.component';
 import { SignupTeacherComponent } from './signup-teacher/signup-teacher.component';
+import { TeachernameComponent } from './teachername/teachername.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +21,7 @@ import { SignupTeacherComponent } from './signup-teacher/signup-teacher.componen
     HomeComponent,
     LoginTeacherComponent,
     SignupTeacherComponent,
+    TeachernameComponent,
 
   ],
   imports: [
