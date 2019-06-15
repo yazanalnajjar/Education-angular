@@ -27,15 +27,54 @@ app.use((req, res, next) => {
 
 const {student , teacher , teacherCourse , course } = require('../database/model');
 
-app.get('/yzn' , function(req, res){
-  console.log(res);
-  res.send("Hello Woorld");
-})
+// app.get('/yzn' , function(req, res){
+//   console.log(res);
+//   res.send("Hello Woorld");
+// })
 
 
 
 //Signup for student
-app.post('/teachername' , function(req , res) {
+
+app.post('/signupstudent' , function(req , res) {
+  // console.log(res);
+  const info = (req.body);
+
+
+  // let firstname  = req.body.firstname;
+  // let lastname  = req.body.lastname;
+  let username = req.body.username;
+  let password = req.body.password;
+  let phonenumber = req.body.phonenumber;
+  let location  = req.body.location;
+  let email = req.body.email;
+  password = bcrypt.hashSync(info.password, 10);
+
+  student
+  .create({
+    // firstname : firstname,
+    // lastname : lastname,
+    username : username,
+    password : password,
+    phonenumber : phonenumber,
+    location : location,
+    email : email
+  })
+  .then(function() {
+    return res.status(201).send({ success: 'Sign up as engineer successful' });
+  })
+  .catch(function(err) {
+    if (err.name === 'SequelizeUniqueConstraintError') {
+      return res.status(400).send({ error: 'This username is already taken' });
+    }
+    return res.status(500).send({ error: 'Server Error' });
+  });
+
+});
+
+
+//For Teacher
+app.post('/signupteacher' , function(req , res) {
   // console.log(res);
   const info = (req.body);
 

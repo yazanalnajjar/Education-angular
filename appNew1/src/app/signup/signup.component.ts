@@ -55,7 +55,10 @@ export class SignupComponent implements OnInit {
 
       console.log(this.studentForm.value);
   this.http.post(`${this.uri}/signupstudent`, this.studentForm.value)
-  .subscribe(res => console.log('Done'));
+  .subscribe((res :any) =>{
+
+   console.log('Done')
+  });
 
   // // this.http
   //   .post<boolean>('http://localhost:3000/signupstudent', this.studentForm,  httpOptions)

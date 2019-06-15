@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./teachername.component.css']
 })
 export class TeachernameComponent implements OnInit {
-
+     Teachername  = [];
   uri = 'http://localhost:3000';
 
   constructor(private http : HttpClient) { }
@@ -24,8 +24,12 @@ export class TeachernameComponent implements OnInit {
 
     // console.log("YZZZZZN");
 
-        this.http.get(`${this.uri}/teacher`)
-        .subscribe(res => console.log(res.teachername[0].username));
+        this.http.get(this.uri + '/teacher')
+        .subscribe((res :any) =>{
+        // console.log(res);
+           console.log(res.teachername);
+           this.Teachername = res.teachername;
+        });
 
 
   }
