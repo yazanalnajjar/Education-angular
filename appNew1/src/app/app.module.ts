@@ -13,6 +13,8 @@ import { HomeComponent } from './home/home.component';
 import { LoginTeacherComponent } from './login-teacher/login-teacher.component';
 import { SignupTeacherComponent } from './signup-teacher/signup-teacher.component';
 import { TeachernameComponent } from './teachername/teachername.component';
+import { Ng2SmartTableModule } from 'ng2-smart-table'; // add
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,8 @@ import { TeachernameComponent } from './teachername/teachername.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Ng2SmartTableModule
 
   ],
   providers: [],

@@ -14,7 +14,15 @@ const student = db.define('student' , {
   password : {type : Sequelize.STRING , required  : true},
   phonenumber : {type : Sequelize.INTEGER , required : true},
   location : {type : Sequelize.STRING , required : true},
-  email  : {type : Sequelize.STRING , required : true}
+  email  : {type : Sequelize.STRING , required : true},
+  createdAt: {
+    allowNull: false,
+    type: Sequelize.DATE
+  },
+  updatedAt: {
+    allowNull: false,
+    type: Sequelize.DATE
+  }
 
 
 })
@@ -27,7 +35,15 @@ const teacher = db.define('teacher' , {
   username : { type : Sequelize.STRING , required : true , unique: true},
   password : {type : Sequelize.STRING , required : true},
   phonenumber : {type : Sequelize.STRING , required : true},
-  email  : {type : Sequelize.STRING , required : true}
+  email  : {type : Sequelize.STRING , required : true},
+  createdAt: {
+    allowNull: false,
+    type: Sequelize.DATE
+  },
+  updatedAt: {
+    allowNull: false,
+    type: Sequelize.DATE
+  }
 })
 
 
@@ -51,7 +67,15 @@ const teacherCourse = db.define('teacherCourse' , {
   id: { type: Sequelize.INTEGER,  autoIncrement: true, primaryKey: true },
   name : {type : Sequelize.STRING , required : true},
   material : {type: Sequelize.STRING , required :true},
-  info : {type: Sequelize.STRING , required : true}
+  info : {type: Sequelize.STRING , required : true},
+  createdAt: {
+    allowNull: false,
+    type: Sequelize.DATE
+  },
+  updatedAt: {
+    allowNull: false,
+    type: Sequelize.DATE
+  }
 })
 
 const material = db.define('materail', {
@@ -62,7 +86,15 @@ const material = db.define('materail', {
 const courses = db.define('course' , {
   id: { type: Sequelize.INTEGER,  autoIncrement: true, primaryKey: true },
   name : {type : Sequelize.STRING , required : true },
-  matrial : {type: Sequelize.STRING , required : true}
+  matrial : {type: Sequelize.STRING , required : true},
+  createdAt: {
+    allowNull: false,
+    type: Sequelize.DATE
+  },
+  updatedAt: {
+    allowNull: false,
+    type: Sequelize.DATE
+  }
 
 })
 
@@ -71,13 +103,29 @@ const question = db.define('question' ,{
   id : {type : Sequelize.INTEGER , autoIncrement:true ,primaryKey : true  },
 
   questions : {type : Sequelize.STRING , required : true},
-  answer : {type : Sequelize.STRING , required :true}
+  answer : {type : Sequelize.STRING , required :true},
+  createdAt: {
+    allowNull: false,
+    type: Sequelize.DATE
+  },
+  updatedAt: {
+    allowNull: false,
+    type: Sequelize.DATE
+  }
 })
 
 const Info = db.define('Info' , {
   id : {type : Sequelize.INTEGER , autoIncrement:true ,primaryKey : true  },
 
-  info : {type :Sequelize.STRING , required :true }
+  info : {type :Sequelize.STRING , required :true },
+  createdAt: {
+    allowNull: false,
+    type: Sequelize.DATE
+  },
+  updatedAt: {
+    allowNull: false,
+    type: Sequelize.DATE
+  }
 
 })
 

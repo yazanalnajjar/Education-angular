@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 
 
+
 @Component({
   selector: 'app-teachername',
   templateUrl: './teachername.component.html',
@@ -24,7 +25,7 @@ export class TeachernameComponent implements OnInit {
     // console.log("YZZZZZN");
 
         this.http.get(`${this.uri}/teacher`)
-        .subscribe(res => console.log('Done'));
+        .subscribe(res => console.log(res.teachername[0].username));
 
 
   }
