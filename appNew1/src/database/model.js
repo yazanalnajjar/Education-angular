@@ -36,6 +36,10 @@ const teacher = db.define('teacher' , {
   password : {type : Sequelize.STRING , required : true},
   phonenumber : {type : Sequelize.STRING , required : true},
   email  : {type : Sequelize.STRING , required : true},
+  degree : {type:Sequelize.STRING , required : true},
+  exp : {type : Sequelize.STRING , required : true},
+  hobbies : {type : Sequelize.STRING , required : true },
+  faculty : {type:Sequelize.STRING , required : true},
   createdAt: {
     allowNull: false,
     type: Sequelize.DATE

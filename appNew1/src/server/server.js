@@ -144,6 +144,10 @@ app.post('/signinstudent' , function(req, res){
       let password = req.body.password;
       let phonenumber = req.body.phonenumber;
       let email = req.body.email;
+      let degree = req.body.degree;
+      let exp = req.body.exp;
+      let hobbies = req.body.hobbies;
+      let faculty = req.body.faculty;
 
       teacher
 
@@ -152,7 +156,12 @@ app.post('/signinstudent' , function(req, res){
         username : username,
         password  : password,
         phonenumber : phonenumber,
-        email : email
+        email : email,
+        degree : degree,
+        exp : exp,
+        hobbies : hobbies,
+        faculty : faculty
+
 
       })
       .then(function() {
@@ -192,6 +201,39 @@ app.post('/signinstudent' , function(req, res){
 
 
   })
+
+
+  app.get('/teachersInfo' , function(req, res) {
+
+    const name = req.body.name;
+    const degree = req.body.degree;
+    const exp = req.body.exp;
+    const faculty = req.body.faculty;
+
+    teacher.findAll({
+      attributes : ['name' , 'degree' , 'exp' , 'faculty']
+    })
+    .then(teacher =>{
+
+      const teachersInfo = [];
+      for(let i=0 ; i<teachersInfo.length ; i++){
+        teachersInfo.push(teachersInfo[i].dataValues)
+      }
+      console.log('Done');
+      res.json({teachersInfo});
+
+    })
+      .catch(function(err){
+        return res.status(401).send('Server Error');
+    })
+
+    });
+
+
+
+
+
+
 
   app.post('/signinteacher' , function(req, res){
 

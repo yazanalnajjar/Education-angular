@@ -24,7 +24,11 @@ export class SignupTeacherComponent implements OnInit {
       email  : [''],
       phonenumber : [''],
       location : [''],
-      password : ['']
+      password : [''],
+      degree : [''],
+      exp : [''],
+      hobbies : [''],
+      faculty : ['']
 
     })
 
