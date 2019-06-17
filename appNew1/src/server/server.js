@@ -148,6 +148,9 @@ app.post('/signinstudent' , function(req, res){
       let exp = req.body.exp;
       let hobbies = req.body.hobbies;
       let faculty = req.body.faculty;
+      password = bcrypt.hashSync(password, 10);
+
+
 
       teacher
 
@@ -203,112 +206,93 @@ app.post('/signinstudent' , function(req, res){
   })
 
 
-  app.get('/teachersInfo' , function(req, res) {
+  // app.get('/teachersInfo' , function(req, res) {
 
-    const name = req.body.name;
-    const degree = req.body.degree;
-    const exp = req.body.exp;
-    const faculty = req.body.faculty;
+  //   const name = req.body.name;
+  //   const degree = req.body.degree;
+  //   const exp = req.body.exp;
+  //   const faculty = req.body.faculty;
 
+  //   teacher.findOne({
+  //     attributes : [
+  //       'name'   ,
+  //       'degree' ,
+  //        'exp'   ,
+  //        'faculty'
+  //       ]
+  //   })
+
+  //   .then(teacher => {
+
+
+  //     console.log('Done')
+  //     // res.json({teachername});
+  //   })
+  //   .catch(err => console.log(err));
+
+
+
+
+
+
+
+
+
+  //   });
+
+
+  app.get('/teachersInfo' , (req, res) =>{
+      // const name = req.body.name;
+      // const degree = req.body.degree;
+      // const exp = req.body.exp;
+      // const faculty = req.body.faculty;
+
+      const id = req.params.number;
     teacher.findAll({
-      attributes : ['name' , 'degree' , 'exp' , 'faculty']
-    })
-    .then(teacher =>{
 
-      const teachersInfo = [];
-      for(let i=0 ; i<teachersInfo.length ; i++){
-        teachersInfo.push(teachersInfo[i].dataValues)
-      }
-      console.log('Done');
-      res.json({teachersInfo});
+      attributes : [
+          'id',
+               'degree' ,
+                'exp'   ,
+                'hobbies' ,
+                'faculty',
+                'phonenumber',
+                'email'
 
-    })
-      .catch(function(err){
-        return res.status(401).send('Server Error');
-    })
+              ],
 
-    });
-
-
-
+            })
+            .then((result) => res.json(result));
+  })
 
 
 
 
   app.post('/signinteacher' , function(req, res){
-
     const username = req.body.username;
 
     const password = req.body.password;
 
-      console.log(username);
-      console.log(password);
+    //Check if users exists in the database
+    teacher.findOne({where : {username : username}}).then(function(user){
+      if(!user){
+        return res.status(401).send({error : 'Please sign up'});
+      }
+      //compare with stored password
+      const existingHashedPassword = user.password;
+      bcrypt.compare(password , existingHashedPassword).then(function(isMatching){
+        if(isMatching){
+          //create a token and send to client
+          const token = jwt.sign({username : user.username} , SECRET_KEY, {expiresIn : 4000});
+          return res.send({token : token});
+        }else {
+          return res.status(401).send({ error: 'Wrong password' });        }
+      })
 
-      teacher.findOne({where: {username: username}}).then(function(user){
-        if(!user){
-            return res.status(401).send({error: 'Please sign up'});
-        }
-        //Compare with stored password
-        const existingHashedPassword = user.password;
-        bcrypt.compare(password, existingHashedPassword).then(function(isMatching){
-            if(isMatching){
-                //Create a token and send to client
-                const token = jwt.sign({username: user.username}, SECRET_KEY, {expiresIn: 4000});
-                return res.send({token: token});
-            } else {
-                return res.status(401).send({error: 'Wrong password'});
-            }
-        });
-    });
+
+    })
   })
 
-    // const authenticate = function(req, res, next) {
-    //   const token = req.headers['x-access-token']; //Username encoded in token
-    //   if (!token) {
-    //     return res.status(401).send('Please sign in');
-    //   }
-    //   jwt.verify(token, SECRET_KEY, (err, data) => {
-    //     //console.log(data)
-    //     if (err) {
-    //       return res.status(401).send('Please sign in');
-    //     }
-    //     //Check if user exists in the database
-    //     const username = data.username;
-
-    //     if (data.role) {
-    //       //console.log(username)
-    //       student
-    //         .findOne({ where: { username: username } })
-    //         .then((user) => {
-    //           //console.log(user)
-    //           if (!user) {
-    //             return res.status(401).send('Please sign up');
-    //           }
-    //           req.body.user = user; // put user in req.body
-    //           //console.log(user)
-    //           return next();
-    //         })
-    //         .catch(function(err) {
-    //           return res.status(500).send(err);
-    //         });
-    //     } else {
-    //       teacher
-    //         .findOne({ where: { username: username } })
-    //         .then((user) => {
-    //           //console.log(user)
-    //           if (!user) {
-    //             return res.status(401).send('Please sign up');
-    //           }
-    //           req.body.user = user; // put user in req.body
-    //           //console.log(user)
-    //           return next();
-    //         })
-    //         .catch(function(err) {
-    //           return res.status(500).send(err);
-    //         });
-    //     }
-    //   });
-    // };
 
   app.post('/teacherCourse' , function(req , res){
 

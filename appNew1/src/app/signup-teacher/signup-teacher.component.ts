@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,6 +13,7 @@ export class SignupTeacherComponent implements OnInit {
   teacherForm : FormGroup;
 
   uri = 'http://localhost:3000';
+  router: any;
   constructor(private fb:FormBuilder  , private http: HttpClient) { }
 
   ngOnInit() {
@@ -46,11 +48,19 @@ export class SignupTeacherComponent implements OnInit {
 
       console.log(this.teacherForm.value);
   this.http.post(`${this.uri}/signupteacher`, this.teacherForm.value)
-  .subscribe((res :any) => {
-
-    console.log('Done')
+  .subscribe((res ) => {
+    console.log(res);
+    // console.log('Done')
 
   });
+
+
+  // this.router.navigate(['./home'])
+
+
+
+
+
   // // this.http
   //   .post<boolean>('http://localhost:3000/signupstudent', this.studentForm,  httpOptions)
   //   .pipe(

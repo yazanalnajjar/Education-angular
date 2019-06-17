@@ -15,6 +15,10 @@ const student = db.define('student' , {
   phonenumber : {type : Sequelize.INTEGER , required : true},
   location : {type : Sequelize.STRING , required : true},
   email  : {type : Sequelize.STRING , required : true},
+
+
+
+
   createdAt: {
     allowNull: false,
     type: Sequelize.DATE
@@ -40,6 +44,7 @@ const teacher = db.define('teacher' , {
   exp : {type : Sequelize.STRING , required : true},
   hobbies : {type : Sequelize.STRING , required : true },
   faculty : {type:Sequelize.STRING , required : true},
+
   createdAt: {
     allowNull: false,
     type: Sequelize.DATE

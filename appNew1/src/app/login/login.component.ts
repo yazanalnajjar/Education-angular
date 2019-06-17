@@ -32,10 +32,10 @@ export class LoginComponent implements OnInit {
     this.http.post(`${this.uri}/signinstudent`, this.studentForm.value)
     .subscribe((res )=> {
         console.log(this.studentForm.value.username);
-      if(!this.studentForm.value){
-        console.log("UNauthrized");
+      // if(!this.studentForm.value){
+      //   console.log("UNauthrized");
 
-      }
+      // }
 
       // console.log(this.studentForm.value);
   });

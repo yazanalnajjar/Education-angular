@@ -10,27 +10,22 @@ import { TeacherInfoComponent } from './teacher-info/teacher-info.component';
 
 const routes: Routes = [
   {path : 'login' , component : LoginComponent},
+
   {path : 'signup' , component : SignupComponent},
+
   {path : 'login-t' , component : LoginTeacherComponent},
+
   {path : 'signup-t' , component : SignupTeacherComponent},
-  {
-    path : 'teachername',
-    component :TeachernameComponent,
 
-    children : [
-    {
-      path : 'teachersInfo' ,
-      component : TeacherInfoComponent
-    }
-    ]
+  {path : 'teachername',component :TeachernameComponent,},
 
-  },
+  {path : 'teachersInfo/:id' , component : TeacherInfoComponent},
 
 
 
   {path : 'home' , component : HomeComponent},
 
-  {path : ' ' , redirectTo: '/' , pathMatch : 'full'}
+  {path : ' ' , redirectTo: '/home' , pathMatch : 'full'}
 ];
 
 @NgModule({
