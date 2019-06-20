@@ -181,9 +181,9 @@ app.post('/signinstudent' , function(req, res){
 
 
   app.get('/teacher' , function(req ,res){
-    const username = req.body.username;
+
     teacher.findAll({
-      attributes : ['username']
+      attributes : [ 'id' ,'username' ]
     })
     .then(teacher => {
 

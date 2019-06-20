@@ -12,53 +12,36 @@ import { Router } from '@angular/router';
   styleUrls: ['./teachername.component.css']
 })
 export class TeachernameComponent implements OnInit {
-     Teachername  = [];
+
+  Teachername  = [];
   uri = 'http://localhost:3000';
+  // pageNum = 0;
 
   constructor(private http : HttpClient , private router: Router ) { }
 
   ngOnInit() {
 
-  }
-
-  // handleClick() {
-
+          this.http.get(this.uri + '/teacher')
+          .subscribe((res :any) =>{
 
 
-  //       this.http.get(this.uri + '/teacher')
-  //       .subscribe((res :any) =>{
+             this.Teachername = res.teachername;
 
-  //          this.Teachername = res.teachername;
+             console.log(res.teachername);
 
-  //          console.log(res);
+          });
 
-  //       });
-
-  // }
-
-  // teacherlist() {
-  //   this.http.get(this.uri + '/teacher')
-  //       .subscribe((res :any) =>{
-
-  //          this.Teachername = res.teachername;
-  //         //  console.log(res);
-  //       });
-  // }
-
-
-  onClick(teacherId : number){
+    }
 
 
 
-    this.http.get(this.uri + '/teachersInfo')
-    .subscribe((res :any) =>{
 
-       this.Teachername = res.teachername;
 
-       console.log(res);
 
-    });
 
-    this.router.navigate(['/teachersInfo' , teacherId ]);
-  }
+
+      onClick(teacherId : number) {
+
+          this.router.navigate(['/teachersInfo' , teacherId++ ] );
+      }
 }

@@ -4,47 +4,8 @@
     <div>
      <ul *ngFor="let teacher of Teachername">
       <li (click) = "onClick(teacher.id)">
-        {{teacher.name}}
+        {{teacher.username}}
       </li>
       <router-outlet></router-outlet>
     </ul>
   </div>
-<!--
-    <ul  *ngFor="let teacher of Teachername">
-
-      <li>
-        <a (click)="handleClick()">{{teacher.username}}</a>
-      </li>
-
-     </div>
-      <div class="panel-footer">
-          <div class="btn-toolbar" >
-              <button (click)="handleClick()" type="button" class="btn btn-primary">Button</button>
-
-
-              </div>
-              </div>
-
-        -->
-
-
-
-        <!-- <div>
-
-            <ul  *ngFor="let teacher of Teachername">
-
-              <li>
-                <a>{{teacher.username}}</a>
-              </li>
-
-             </ul>
-              <div class="panel-footer">
-                  <div class="btn-toolbar" >
-                      <button  type="button" class="btn btn-primary">Button</button>
-
-
-                      </div>
-                      </div>
-
-                        <router-outlet></router-outlet>
-                    </div> -->
