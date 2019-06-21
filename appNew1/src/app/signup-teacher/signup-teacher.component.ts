@@ -13,8 +13,7 @@ export class SignupTeacherComponent implements OnInit {
   teacherForm : FormGroup;
 
   uri = 'http://localhost:3000';
-  router: any;
-  constructor(private fb:FormBuilder  , private http: HttpClient) { }
+  constructor(private fb:FormBuilder  , private http: HttpClient , private router: Router) { }
 
   ngOnInit() {
 
@@ -55,7 +54,7 @@ export class SignupTeacherComponent implements OnInit {
   });
 
 
-  // this.router.navigate(['./home'])
+  this.router.navigate(['./login-t'])
 
 
 

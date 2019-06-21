@@ -14,6 +14,15 @@ import { LoginTeacherComponent } from './login-teacher/login-teacher.component';
 import { SignupTeacherComponent } from './signup-teacher/signup-teacher.component';
 import { TeachernameComponent } from './teachername/teachername.component';
 import { TeacherInfoComponent } from './teacher-info/teacher-info.component';
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {
+  MatIconModule, MatButtonModule, MatSidenavModule, MatToolbarModule, MatCheckboxModule
+} from '@angular/material';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+
+
+
 
 @NgModule({
   declarations: [
@@ -32,7 +41,12 @@ import { TeacherInfoComponent } from './teacher-info/teacher-info.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule,
+    BrowserAnimationsModule,
+    NoopAnimationsModule,
+    MatButtonModule,
+
 
 
   ],

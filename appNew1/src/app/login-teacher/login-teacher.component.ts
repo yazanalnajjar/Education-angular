@@ -37,9 +37,9 @@ export class LoginTeacherComponent implements OnInit {
     .subscribe((res) => {
 
 
-        console.log(res);
+        // console.log(res);
     });
-         this.router.navigate(['./home'])
+         this.router.navigate(['./teachername'])
 
    }
   }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { catchError, retry } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -19,13 +20,14 @@ const httpOptions = {
 
 
 export class SignupComponent implements OnInit {
+  [x: string]: any;
 
 
   studentForm : FormGroup;
 
   uri = 'http://localhost:3000';
 
-  constructor(private fb:FormBuilder  , private http: HttpClient ) { }
+  constructor(private fb:FormBuilder  , private http: HttpClient , private router: Router ) { }
 
   ngOnInit() {
 
@@ -59,6 +61,7 @@ export class SignupComponent implements OnInit {
 
    console.log('Done')
   });
+
 
   // // this.http
   //   .post<boolean>('http://localhost:3000/signupstudent', this.studentForm,  httpOptions)
