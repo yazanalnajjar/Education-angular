@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 
 
 
@@ -15,9 +15,10 @@ export class TeachernameComponent implements OnInit {
 
   Teachername  = [];
   uri = 'http://localhost:3000';
-  // pageNum = 0;
 
-  constructor(private http : HttpClient , private router: Router ) { }
+   teacherid =0;
+
+  constructor(private http : HttpClient , private router: Router , private Activatedroute:ActivatedRoute ) { }
 
   ngOnInit() {
 
@@ -31,6 +32,12 @@ export class TeachernameComponent implements OnInit {
 
           });
 
+
+             this._id= +this.Activatedroute.snapshot.queryParamMap.get('pageNum')||0;
+
+
+
+
     }
 
 
@@ -42,6 +49,7 @@ export class TeachernameComponent implements OnInit {
 
       onClick(teacherId : number) {
 
-          this.router.navigate(['/teachersInfo' , teacherId++ ] );
+          this.router.navigate(['/teachersInfo', teacherId ]  ,  { queryParams: { id: teacherId },  relativeTo: this.Activatedroute});
       }
+
 }

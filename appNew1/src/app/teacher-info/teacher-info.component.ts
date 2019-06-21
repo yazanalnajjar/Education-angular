@@ -13,6 +13,8 @@ import { HttpClient } from '@angular/common/http';
 export class TeacherInfoComponent implements OnInit {
     teacher = [];
     uri = 'http://localhost:3000';
+    private _id : number;
+
 
 
     pageNo=0;
@@ -32,8 +34,16 @@ export class TeacherInfoComponent implements OnInit {
       console.log( 'Query params ' , this.pageNo++)
 
   });
+
+
     // const id = +this._route.snapshot.params['id'];
     //  this.TeachernameComponent = this._teacher.onClick(id);
   }
+
+
+//   viewNextTaecher(){
+//     this._id = this._id + 1;
+//     this.router.navigate(['/teachersInfo' , this._id]  )
+// }
 
 }
