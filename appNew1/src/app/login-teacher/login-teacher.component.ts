@@ -4,7 +4,6 @@ import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-login-teacher',
   templateUrl: './login-teacher.component.html',
@@ -33,14 +32,19 @@ export class LoginTeacherComponent implements OnInit {
     onSubmit()  {
 
        console.log(this.teacherForm.value.username);
+
       this.http.post(`${this.uri}/signinteacher`, this.teacherForm.value)
-    .subscribe((res) => {
+
+      .subscribe((res) => {
 
 
-        // console.log(res);
+
+
+        //  console.log( res);
     });
+    if(this.teacherForm.value.username){
          this.router.navigate(['./teachername'])
-
+    }
    }
   }
 

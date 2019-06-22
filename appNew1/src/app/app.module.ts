@@ -1,3 +1,5 @@
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { environment } from './../environments/environment';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,10 +16,10 @@ import { LoginTeacherComponent } from './login-teacher/login-teacher.component';
 import { SignupTeacherComponent } from './signup-teacher/signup-teacher.component';
 import { TeachernameComponent } from './teachername/teachername.component';
 import { TeacherInfoComponent } from './teacher-info/teacher-info.component';
-import {FlexLayoutModule} from "@angular/flex-layout";
-import {
-  MatIconModule, MatButtonModule, MatSidenavModule, MatToolbarModule, MatCheckboxModule
-} from '@angular/material';
+import { MatIconModule, MatButtonModule, MatSidenavModule, MatListModule ,  MatToolbarModule, MatFormFieldModule, MatInputModule ,MatCardModule} from '@angular/material';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
@@ -46,6 +48,16 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     NoopAnimationsModule,
     MatButtonModule,
+   MatCardModule,
+    MatIconModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatListModule,
+    AngularFireModule.initializeApp(environment.firebase),
+  AngularFirestoreModule, // imports firebase/firestore, only needed for database features
+  AngularFireAuthModule, // imports firebase/auth, only needed for auth features
 
 
 

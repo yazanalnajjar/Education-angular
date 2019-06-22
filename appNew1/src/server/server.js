@@ -97,42 +97,7 @@ app.post('/signinstudent' , function(req, res){
     })
   })
 })
-//For Teacher
-// app.post('/signupteacher' , function(req , res) {
-//   // console.log(res);
-//   const info = (req.body);
 
-
-//   // let firstname  = req.body.firstname;
-//   // let lastname  = req.body.lastname;
-//   let username = req.body.username;
-//   let password = req.body.password;
-//   let phonenumber = req.body.phonenumber;
-//   let location  = req.body.location;
-//   let email = req.body.email;
-//   password = bcrypt.hashSync(info.password, 10);
-
-//   teacher
-//   .create({
-//     // firstname : firstname,
-//     // lastname : lastname,
-//     username : username,
-//     password : password,
-//     phonenumber : phonenumber,
-//     location : location,
-//     email : email
-//   })
-//   .then(function() {
-//     return res.status(201).send({ success: 'Sign up as engineer successful' });
-//   })
-//   .catch(function(err) {
-//     if (err.name === 'SequelizeUniqueConstraintError') {
-//       return res.status(400).send({ error: 'This username is already taken' });
-//     }
-//     return res.status(500).send({ error: 'Server Error' });
-//   });
-
-// });
 
 
 
@@ -206,46 +171,15 @@ app.post('/signinstudent' , function(req, res){
   })
 
 
-  // app.get('/teachersInfo' , function(req, res) {
-
-  //   const name = req.body.name;
-  //   const degree = req.body.degree;
-  //   const exp = req.body.exp;
-  //   const faculty = req.body.faculty;
-
-  //   teacher.findOne({
-  //     attributes : [
-  //       'name'   ,
-  //       'degree' ,
-  //        'exp'   ,
-  //        'faculty'
-  //       ]
-  //   })
-
-  //   .then(teacher => {
-
-
-  //     console.log('Done')
-  //     // res.json({teachername});
-  //   })
-  //   .catch(err => console.log(err));
 
 
 
 
 
 
-
-
-
-  //   });
 
 
   app.get('/teachersInfo' , (req, res) =>{
-      // const name = req.body.name;
-      // const degree = req.body.degree;
-      // const exp = req.body.exp;
-      // const faculty = req.body.faculty;
 
       const id = req.params.number;
     teacher.findAll({

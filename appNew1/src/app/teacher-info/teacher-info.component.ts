@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { TeachernameComponent } from './../teachername/teachername.component';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import { TeachernameComponent } from '../teachername/teachername.component';
+
 import { HttpClient } from '@angular/common/http';
 
 
@@ -11,39 +12,27 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./teacher-info.component.css']
 })
 export class TeacherInfoComponent implements OnInit {
-    teacher = [];
-    uri = 'http://localhost:3000';
-    private _id : number;
+
+   id : number;
+   private sub : any;
 
 
 
-    pageNo=0;
-    snapshotPageNo=0;
-  constructor(  private http : HttpClient ,  private router: Router  , private route : ActivatedRoute) { }
+  constructor(  private http : HttpClient ,  private router: Router  , private route : ActivatedRoute ) { }
 
   ngOnInit() {
 
+      this.sub = this.route.params.subscribe(params => {
+        this.id = +params['id'];
+      });
 
 
-
-    this.snapshotPageNo = this.route.snapshot.queryParams['pageNum'] || 0;
-
-    this.route.queryParamMap
-    .subscribe(params => {
-      this.pageNo = +params.get('pageNum')||0;
-      console.log( 'Query params ' , this.pageNo++)
-
-  });
-
-
-    // const id = +this._route.snapshot.params['id'];
-    //  this.TeachernameComponent = this._teacher.onClick(id);
   }
 
 
-//   viewNextTaecher(){
-//     this._id = this._id + 1;
-//     this.router.navigate(['/teachersInfo' , this._id]  )
-// }
+
+
+
+
 
 }

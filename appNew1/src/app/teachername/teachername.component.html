@@ -1,16 +1,30 @@
-
+<mat-form-field class="search-form">
+    <input matInput placeholder="Search Picture" type="text">
+  </mat-form-field>
+  <button button="submit" mat-raised-button color="primary">Search</button>
+  <br>
 
 
     <div  class="container">
         <div class="row">
             <div class="col-sm">
-     <ul *ngFor="let teacher of Teachername">
+     <mat-card class="card-picture"    *ngFor="let teacher of Teachername">
+      <mat-card-title fxLayout.gt-xs="row" fxLayout.xs = "column">
 
-      <li (click) = "onClick(teacher.id)"  >
-        {{teacher.username}}
-      </li>
-      <button class="btn btn-primary pull-right">Back to List</button>
-    </ul>
+        <button fxFlex="80%" (click) = "onClick(teacher.id)"  class="pointerCursor"  >
+          {{teacher.username}}
+        </button>
+        <mat-icon fxFlex="10%">mode_edit</mat-icon>
+        <mat-icon fxFlex="10%">delete</mat-icon>
+      </mat-card-title>
+
+
+    </mat-card>
+
+      <!-- <img [src] ="../../assets/images/team/"/> -->
+
+      <!-- <button class="btn btn-primary pull-right">Back to List</button> -->
+
   </div>
 </div>
 

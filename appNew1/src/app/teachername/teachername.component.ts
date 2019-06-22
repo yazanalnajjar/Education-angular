@@ -17,6 +17,7 @@ export class TeachernameComponent implements OnInit {
   uri = 'http://localhost:3000';
 
    teacherid =0;
+   id = 0;
 
   constructor(private http : HttpClient , private router: Router , private Activatedroute:ActivatedRoute ) { }
 
@@ -28,14 +29,19 @@ export class TeachernameComponent implements OnInit {
 
              this.Teachername = res.teachername;
 
-             console.log(res.teachername);
+            //  console.log(res.teachername);
 
           });
 
 
-             this._id= +this.Activatedroute.snapshot.queryParamMap.get('pageNum')||0;
+            this.Activatedroute.snapshot.queryParamMap.get('pageNum')||0;
 
+            this.Activatedroute.queryParamMap
+            .subscribe(params => {
+              this.teacherid = +params.get('pageNum')||0;
+              console.log( 'Query params ' , this.teacherid++)
 
+          });
 
 
     }
@@ -48,6 +54,16 @@ export class TeachernameComponent implements OnInit {
 
 
       onClick(teacherId : number) {
+
+        this.http.get(this.uri + '/teachersInfo')
+        .subscribe(data =>{
+
+
+          //  data.find(e =>e.id === data.id);
+
+        });
+
+
 
           this.router.navigate(['/teachersInfo', teacherId ]  ,  { queryParams: { id: teacherId },  relativeTo: this.Activatedroute});
       }

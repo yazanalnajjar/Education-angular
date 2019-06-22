@@ -1,33 +1,87 @@
 
-<div class="container">
-
-  <nav class="navbar navbar-light bg-faded">
+<div class="container" fxFlexFill class="example-container">
+    <!-- <mat-toolbar color = "primary"  fxShow="true" fxHide.gt-sm="true">
+  <nav class=" ">
       <ul class = "nav navbar-nav">
-
+            <mat-toolbar-row>
         <li>
           <a routerLinkActive = "active" class="navbar-brand" routerLink = "signup">SignUp</a>
         </li>
+      </mat-toolbar-row>
+    <mat-toolbar-row>
         <li>
           <a routerLinkActive = "active" class="navbar-brand" routerLink = "home">home</a>
         </li>
-
+      </mat-toolbar-row>
+    <mat-toolbar-row>
         <li>
             <a routerLinkActive = "active" routerLink = "login">Login</a>
           </li>
-
+        </mat-toolbar-row>
+      <mat-toolbar-row>
           <li>
             <a routerLinkActive = "active" routerLink = "login-t">Login-Teacher</a>
           </li>
+        </mat-toolbar-row>
 
 
+      <mat-toolbar-row>
 
           <li>
             <a routerLinkActive = "active" [routerLink] = "['teachername']">teachername</a>
           </li>
-
+        </mat-toolbar-row>
 
 
       </ul>
     </nav>
+  </mat-toolbar> -->
+
+
+
+    <div>
+  <mat-toolbar color="primary">
+      <div fxShow="true" fxHide.gt-sm="true">
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </div>
+
+      <a mat-button class="companyName" routerLink="/home">
+        <span>FEFO</span>
+      </a>
+      <span class="example-spacer"></span>
+      <div fxShow="true" fxHide.lt-md="true">
+
+        <a mat-button routerLink="/home">home</a>
+        <a mat-button routerLink="/login">Login</a>
+        <a mat-button routerLink="/login-t">Login-Teacher</a>
+        <a mat-button routerLink="/teachername">teachername</a>
+      </div>
+
+    </mat-toolbar>
+
+    <mat-sidenav-container fxFlexFill class="example-container">
+
+        <mat-sidenav color="primary" #sidenav fxLayout="column" mode="over"  opened="false" fxHide.gt-sm="true">
+          <div fxLayout="column">
+              <a mat-button routerLink="/signup">SignUp</a>
+              <a mat-button routerLink="/home">home</a>
+              <a mat-button routerLink="/login">Login</a>
+              <a mat-button routerLink="/login-t">Login-Teacher</a>
+              <a mat-button routerLink="/teachername">teachername</a>
+          </div>
+        </mat-sidenav>
+
+      </mat-sidenav-container>
+
+
+
+  </div>
+
+
+
+
+
     <router-outlet></router-outlet>
   </div>

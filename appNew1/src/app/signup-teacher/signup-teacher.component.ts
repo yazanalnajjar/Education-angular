@@ -47,8 +47,9 @@ export class SignupTeacherComponent implements OnInit {
 
       console.log(this.teacherForm.value);
   this.http.post(`${this.uri}/signupteacher`, this.teacherForm.value)
-  .subscribe((res ) => {
-    console.log(res);
+  .subscribe(data  => {
+    // console.log(res);
+    alert('You Signed up Successfully');
     // console.log('Done')
 
   });
