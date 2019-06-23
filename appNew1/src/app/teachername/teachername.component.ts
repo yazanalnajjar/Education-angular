@@ -12,14 +12,14 @@ import { ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./teachername.component.css']
 })
 export class TeachernameComponent implements OnInit {
-
+teachers;
   Teachername  = [];
   uri = 'http://localhost:3000';
 
    teacherid =0;
-   id = 0;
+   id ;
 
-  constructor(private http : HttpClient , private router: Router , private Activatedroute:ActivatedRoute ) { }
+  constructor(private http : HttpClient , private router: Router , private route:ActivatedRoute ) { }
 
   ngOnInit() {
 
@@ -29,19 +29,19 @@ export class TeachernameComponent implements OnInit {
 
              this.Teachername = res.teachername;
 
-            //  console.log(res.teachername);
+              console.log(this.Teachername);
 
           });
 
 
-            this.Activatedroute.snapshot.queryParamMap.get('pageNum')||0;
+          //   this.route.snapshot.queryParamMap.get('pageNum')||0;
 
-            this.Activatedroute.queryParamMap
-            .subscribe(params => {
-              this.teacherid = +params.get('pageNum')||0;
-              console.log( 'Query params ' , this.teacherid++)
+          //   this.route.queryParamMap
+          //   .subscribe(params => {
+          //     this.teacherid = +params.get('pageNum')||0;
+          //     console.log( 'Query params ' , this.teacherid++)
 
-          });
+          // });
 
 
     }
@@ -55,17 +55,23 @@ export class TeachernameComponent implements OnInit {
 
       onClick(teacherId : number) {
 
-        this.http.get(this.uri + '/teachersInfo')
-        .subscribe(data =>{
+        // this.http.get(this.uri + '/teachersInfo')
+        // .subscribe(data =>{
+        //   console.log(data);
+        //       for(var i=0 ; i < data ; i++){
+        //       return data[i].find(e => e.id === this.id);
+        //       }
+
+        // });
 
 
-          //  data.find(e =>e.id === data.id);
 
-        });
-
+      this.id= +this.route.snapshot.params['id'];
 
 
-          this.router.navigate(['/teachersInfo', teacherId ]  ,  { queryParams: { id: teacherId },  relativeTo: this.Activatedroute});
+
+
+          this.router.navigate(['/teachersInfo', teacherId ]  ,  { queryParams: { id: teacherId },  relativeTo: this.route});
       }
 
 }

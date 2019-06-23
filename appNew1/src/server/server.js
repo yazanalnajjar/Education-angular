@@ -186,6 +186,7 @@ app.post('/signinstudent' , function(req, res){
 
       attributes : [
           'id',
+          'name',
                'degree' ,
                 'exp'   ,
                 'hobbies' ,
