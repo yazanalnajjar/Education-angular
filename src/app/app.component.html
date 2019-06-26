@@ -1,0 +1,52 @@
+<!-- <div class="container">
+  <nav class="navbar navbar-default">
+      <ul class="nav navbar-nav">
+          <li>
+              <a routerLink="login">Login</a>
+          </li>
+          <li>
+              <a routerLink="teachername">Teacher-Name</a>
+          </li>
+      </ul>
+  </nav>
+  <router-outlet></router-outlet>
+</div> -->
+
+
+<div>
+
+<nav class="navbar navbar-full navbar-expand-lg bg-dark navbar-dark " id="nav"  >
+  <a class="navbar-brand" routerLink =''>Super Event</a>
+  <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="about">About</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink='login-t'>Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink='teachername'>Teacher-List</a>
+        </li>
+
+
+        <li class="nav-item">
+          <a class="nav-link" routerLink="course">Course</a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+
+  <!-- <app-home></app-home> -->
+  <!-- <app-root></app-root> -->
+  <router-outlet></router-outlet>
+
+
+</div>

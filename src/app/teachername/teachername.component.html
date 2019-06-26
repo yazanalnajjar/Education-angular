@@ -1,0 +1,53 @@
+<mat-form-field class="search-form">
+    <input matInput placeholder="Search Picture" type="text">
+  </mat-form-field>
+  <button button="submit" mat-raised-button color="primary">Search</button>
+  <br>
+
+
+    <div  class="container">
+        <div class="row">
+            <div class="col-sm">
+     <mat-card class="card-picture"    *ngFor="let teacher of Teachername">
+      <mat-card-title fxLayout.gt-xs="row" fxLayout.xs = "column">
+
+        <button fxFlex="80%" (click) = "onClick(teacher.id)"  class="pointerCursor"  >
+          {{teacher.username}}
+        </button>
+
+      </mat-card-title>
+
+
+    </mat-card>
+
+      <!-- <img [src] ="../../assets/images/team/"/> -->
+
+      <!-- <button class="btn btn-primary pull-right">Back to List</button> -->
+
+  </div>
+</div>
+
+
+
+
+<div class="col-12 col-sm-6 col-md-6 col-lg-4">
+  <div class="single-courses">
+      <div class="courses_banner_wrapper">
+          <div class="courses_banner"><a href="https://www.youtube.com/watch?v=i0a61wFaF8A"><img src="../../assets/images/courses/courses_2.jpg" alt="" class="img-fluid"></a></div>
+          <div class="purchase_price">
+              <a href="#" class="read_more-btn">Free</a>
+          </div>
+      </div>
+      <div class="courses_info_wrapper">
+          <div class="courses_title" *ngFor="let teacher of Teachername">
+              <h3><a href="https://www.youtube.com/watch?v=i0a61wFaF8A">How To Be A Speaker</a></h3>
+              <div class="teachers_name">Teacher - <a href="https://www.youtube.com/watch?v=i0a61wFaF8A" title=""> {{teacher.username}}
+              </a></div>
+          </div>
+
+      </div>
+  </div><!-- Ends: .single courses -->
+</div>
+<router-outlet></router-outlet>
+
+  </div>
