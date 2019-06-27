@@ -20,10 +20,10 @@ export class LoginComponent implements OnInit {
       username : [''],
       password : [''],
     })
-    // this.studentForm.valueChanges.subscribe((res)=>{
-    //   console.log(res);
-    //   console.log(this.studentForm.value);
-    // })
+    this.studentForm.valueChanges.subscribe((res)=>{
+      // console.log(res);
+      console.log(this.studentForm.value);
+    })
   }
 
   onSubmit()  {

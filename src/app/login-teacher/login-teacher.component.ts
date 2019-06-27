@@ -35,16 +35,18 @@ export class LoginTeacherComponent implements OnInit {
 
       this.http.post(`${this.uri}/signinteacher`, this.teacherForm.value)
 
-      .subscribe((res) => {
+      .subscribe((res )=> {
+        console.log(this.teacherForm.value , "Check if the  teacherr if work or not");
+        if( Object.keys(res).length === 0){
+        alert('Wrong');
+        }else {
 
+          this.router.navigate(['./teachername'])
+        }
 
-
-
-          console.log( this.teacherForm.value);
+         console.log(res);
     });
-    if(this.teacherForm.value.username){
-         this.router.navigate(['./teachername'])
-    }
+
 
     console.log("HEELO")
    }

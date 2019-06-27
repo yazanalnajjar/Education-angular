@@ -216,7 +216,7 @@ app.post('/signinstudent' , function(req, res){
     //Check if users exists in the database
     teacher.findOne({where : {username : username}}).then(function(user){
       if(!user){
-        return res.status(401).send({error : 'Please sign up'});
+        return res.send({});
       }
       //compare with stored password
       const existingHashedPassword = user.password;
