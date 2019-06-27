@@ -1,13 +1,19 @@
 {
   "name": "app-new1",
   "version": "0.0.0",
+    "main" : "app.js",
   "scripts": {
-
+    "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build --aot -prod"
+  },
+  "engines": {
+    "node" : "~10.15.3",
+    "npm " : "6.9.0"
   },
   "private": true,
   "dependencies": {

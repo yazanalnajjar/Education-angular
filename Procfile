@@ -1,2 +1,2 @@
 web : ng s -o
-web : ng build
+web : node app.js
