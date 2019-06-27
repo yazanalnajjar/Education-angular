@@ -1,1 +1,2 @@
-web : ng serve --open
+web : ng s -o
+web : ng build
