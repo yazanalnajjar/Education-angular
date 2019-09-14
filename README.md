@@ -1,5 +1,5 @@
 # Hisas-Online
-description : Web app that helps students to connection with teacher's
+Description : Web app that helps students to connection with teacher's
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.0.2.
 
